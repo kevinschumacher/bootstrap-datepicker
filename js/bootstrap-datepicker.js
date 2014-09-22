@@ -85,10 +85,10 @@
 
 	var Datepicker = function(element, options){
 		this.dates = new DateArray();
-		this.viewDate = UTCToday();
 		this.focusDate = null;
 
 		this._process_options(options);
+		this.viewDate = this.o.viewDate;
 
 		this.element = $(element);
 		this.isInline = false;
@@ -221,6 +221,17 @@
 				}
 				else {
 					o.endDate = Infinity;
+				}
+			}
+			if(o.viewDate !== UTCToday()){
+				if(!!o.viewDate){
+					if(o.viewDate instanceof Date)
+						o.viewDate = this._local_to_utc(this._zero_time(o.viewDate));
+					else
+						o.viewDate = DPGlobal.parseDate(o.viewDate, format, o.language);
+				}
+				else {
+					o.viewDate = UTCToday();
 				}
 			}
 
