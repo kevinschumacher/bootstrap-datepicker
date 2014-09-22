@@ -208,6 +208,13 @@ If true, highlights the current date.
     :align: center
 
 
+viewDate
+--------
+
+Date.  Default: UTC Today
+
+The date that will be used to initialize the date picker view. This is the date that will be shown on the first opening of an unset datepicker. 
+
 weekStart
 ---------
 
